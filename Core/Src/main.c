@@ -35,25 +35,21 @@ static void MX_GPIO_Init(void);
 static void MX_USART3_UART_Init(void);
 
 
-void reset_cnt()
-{
+void reset_cnt() {
     CoreDebug->DEMCR |= 0x01000000;
     DWT->CYCCNT = 0; // reset the counter
     DWT->CTRL = 0;
 }
 
-void start_cnt()
-{
+void start_cnt() {
     DWT->CTRL |= 0x00000001 ; // enable the counter
 }
 
-void stop_cnt()
-{
+void stop_cnt() {
      DWT->CTRL &= 0xFFFFFFFE ; // disable the counter
 }
 
-unsigned int getCycles()
-{
+unsigned int getCycles() {
     return DWT->CYCCNT ;
 }
 
@@ -67,8 +63,7 @@ unsigned int getCycles()
 #endif
 #define DWT_LAR_KEY 0xC5ACCE55
 
-void dwt_access_enable( unsigned ena )
-{
+void dwt_access_enable( unsigned ena ) {
     uint32_t lsr = DWT->LSR;;
 
     if( (lsr & DWT_LSR_Present_Msk) != 0 )
