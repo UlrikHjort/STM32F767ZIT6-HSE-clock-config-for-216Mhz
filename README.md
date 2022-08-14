@@ -1,0 +1,1 @@
+STM32F767ZIT6 HSE clock config for 216Mhz
